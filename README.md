@@ -193,3 +193,4 @@ https://velog.io/@heelieben/%EA%B0%9C%EB%B0%9C-%EA%B3%B5%EA%B0%90-%EC%A7%A4-%EA%
 
 ## 라이센스
 
+“This project is licensed under the terms of the MIT license.”
