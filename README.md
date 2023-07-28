@@ -189,7 +189,5 @@ https://softwaremill.com/programmers-day-programming-memes-2022/
 
 https://velog.io/@heelieben/%EA%B0%9C%EB%B0%9C-%EA%B3%B5%EA%B0%90-%EC%A7%A4-%EA%B5%AC%EA%B2%BD%ED%95%98%EA%B3%A0-%EA%B0%80%EC%84%B8%EC%9A%94
 
-
-
 ## 라이센스
 
