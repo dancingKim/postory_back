@@ -2,9 +2,9 @@ package com.jungsuk_2_1.postory.service;
 
 import java.util.*;
 
-import javax.mail.Message.RecipientType;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.Message.RecipientType;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
 
 import com.jungsuk_2_1.postory.dao.EmailAuthDao;
 import com.jungsuk_2_1.postory.dao.UserDao;

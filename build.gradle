@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '2.7.12'
+	id 'org.springframework.boot' version '3.1.2'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
@@ -8,7 +8,7 @@ group = 'com.jungsuk_2_1'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = '11'
+	sourceCompatibility = '17'
 }
 
 configurations {
@@ -22,15 +22,16 @@ repositories {
 }
 
 dependencies {
-//	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-//	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-properties-migrator
+	implementation 'org.springframework.boot:spring-boot-properties-migrator:3.1.2'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1'
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.3.1.RELEASE'
-	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
-	implementation group: 'org.springframework.security', name: 'spring-security-oauth2-client', version: '5.6.1'
+//	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.3.1.RELEASE'
+	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-client
+	implementation group: 'org.springframework.security', name: 'spring-security-oauth2-client', version: '6.1.2'
+
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.mysql:mysql-connector-j'

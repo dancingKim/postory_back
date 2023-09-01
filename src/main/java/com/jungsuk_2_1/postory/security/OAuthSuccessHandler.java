@@ -1,16 +1,14 @@
 package com.jungsuk_2_1.postory.security;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
-import lombok.extern.apachecommons.CommonsLog;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.swing.text.html.Option;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Optional;
@@ -33,6 +31,8 @@ public class OAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         Optional<String> redirectUri = oCookie.map(Cookie::getValue);
 
         log.info("token {}", token);
-        response.sendRedirect(redirectUri.orElseGet(() -> LOCAL_REDIRECT_URL)+ "/sociallogin?token" + token);
+        String url = redirectUri.orElseGet(() -> LOCAL_REDIRECT_URL)+ "/sociallogin?token="+ token;
+        log.info("redirectUri with token = '{}",url);
+        response.sendRedirect(redirectUri.orElseGet(() -> LOCAL_REDIRECT_URL)+ "/sociallogin?token=" + token);
     }
 }

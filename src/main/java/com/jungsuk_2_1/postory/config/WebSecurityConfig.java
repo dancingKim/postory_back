@@ -14,6 +14,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -44,33 +45,29 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.cors().and()
-                .csrf().disable()
-                .httpBasic().disable()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .authorizeRequests() // "/" 와 " /auth/** " 경로는 인증 안 해도 됨.
-                .antMatchers("/", "/auth/**","/oauth2/**","/login/oauth2/**","/favicon.ico").permitAll()
-                .anyRequest()
-                .authenticated()
-                        .and()
-                .oauth2Login()
-                .redirectionEndpoint()
-                .baseUri("/login/oauth2/code/*")
-                .and()
-                .authorizationEndpoint()
-                .baseUri("/auth/authorize")
-                .and()
-                .userInfoEndpoint()
-                .userService(oAuthUserService)
-                .and()
-                .successHandler(oAuthSuccessHandler)
-                .and()
-                .exceptionHandling()
-                .authenticationEntryPoint(new Http403ForbiddenEntryPoint());
-                ;
 
+        http.cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .csrf(csrf -> csrf.disable())
+                .httpBasic(httpBasic -> httpBasic.disable())
+                        .sessionManagement((session) -> session
+                                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                        )
+                .authorizeHttpRequests((authorize)-> authorize.requestMatchers(
+                        "/",
+                                "/auth/**",
+                                "/oauth2/**",
+                                "/login/oauth2/**",
+                                "/favicon.ico")
+                        .permitAll()
+                        .anyRequest()
+                        .authenticated())
+                .oauth2Login((oauth2Login) ->oauth2Login.redirectionEndpoint(
+                        (redirect) -> redirect
+                                .baseUri("/login/oauth2/code/**"))
+                        .authorizationEndpoint((authEnd) ->authEnd.baseUri("/auth/authorize"))
+                        .userInfoEndpoint(userInfoEnd -> userInfoEnd.userService(oAuthUserService))
+                        .successHandler(oAuthSuccessHandler)).exceptionHandling(exceptHandle->exceptHandle.authenticationEntryPoint(new Http403ForbiddenEntryPoint()))
+        ;
         // filter 등록
         // 매 요청마다
         // CorsFilter 실행한 후에
@@ -86,6 +83,7 @@ public class WebSecurityConfig {
         return http.build();
     }
     @Bean
+    @CrossOrigin
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 //        configuration.setAllowedOriginPatterns(Arrays.asList("*"));
@@ -120,7 +118,7 @@ public class WebSecurityConfig {
 //                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 //                .and()
 //                .authorizeRequests() // "/" 와 " /auth/** " 경로는 인증 안 해도 됨.
-//                .antMatchers("/", "/auth/**").permitAll()
+//                .requestMatchers("/", "/auth/**").permitAll()
 //                .anyRequest() // "/" 와 " /auth/** " 경로 이외에는 인증 해야 됨.
 //                .authenticated();
 //
