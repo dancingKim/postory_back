@@ -17,8 +17,8 @@
 
 	처음엔 Spring Legacy를 maven 방식으로 빌드했습니다. 그리고 spring security를  적용했습니다. 그리고 완성한 영역 외에 결제, 멤버십, 상품, 포인트 등 모두 68개 테이블을 설계했었습니다.
 
-	그러나 spring security를 spring legacy 환경에서 김정호(본인)는 사용할 수 있으나,
-	팀이 사용하기 어렵다 판단해 spring boot로 전환했습니다. 프로젝트 완성 기한을 맞추기 위해 앞서 언급한 상당수 기능 구현을 포기했습니다. 더 자세한 이유는 링크로 첨부합니다.  
+	spring security를 spring legacy 환경에서 사용할 수 있게 했으나,
+	팀원 모두가 이해하기엔 어렵다 판단해 spring boot로 전환했습니다. 프로젝트 완성 기한을 맞추기 위해 앞서 언급한 상당수 기능 구현을 포기했습니다. 더 자세한 이유는 링크로 첨부합니다.  
 	https://velog.io/@iamloved5959/Spring-Legacy%EC%99%80-React%EC%97%90%EC%84%9C-spring-security-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0
 
 	최종적으로 사용한 기술은 다음과 같습니다.
