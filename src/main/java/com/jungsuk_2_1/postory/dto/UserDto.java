@@ -28,7 +28,6 @@ public class UserDto {
     private String currentPwd;
     private String newPwd;
 
-
     public UserDto update(String name) {
         this.nic = name;
         return this;

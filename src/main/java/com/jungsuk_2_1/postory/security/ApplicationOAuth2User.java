@@ -1,5 +1,6 @@
 package com.jungsuk_2_1.postory.security;
 
+import lombok.Builder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -8,11 +9,17 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 
+@Builder
 public class ApplicationOAuth2User implements OAuth2User {
     private String id;
     private Collection<? extends GrantedAuthority> authorities;
     private Map<String, Object> attributes;
 
+
+
+    ApplicationOAuth2User(){
+        super();
+    }
     public ApplicationOAuth2User(String id, Map<String, Object> attributes) {
         this.id=id;
         this.attributes = attributes;

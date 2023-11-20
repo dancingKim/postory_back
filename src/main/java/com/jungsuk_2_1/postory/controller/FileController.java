@@ -103,7 +103,7 @@ public class FileController {
             ObjectMetadata metadata = new ObjectMetadata();
             metadata.setContentType(file.getContentType());
             metadata.setContentLength(fileSize);
-            System.out.println("bucket = "+ bucket);
+            System.out.println("bucket = "+ bucket);fee_detail
 //            https://postory-image.s3.ap-northeast-2.amazonaws.com/src/16895093343242601.png
 
             String fileUrl = "https://postory-image.s3.ap-northeast-2.amazonaws.com/src/"+ fileId + "."+ fileExtension;

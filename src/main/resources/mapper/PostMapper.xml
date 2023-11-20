@@ -97,6 +97,7 @@
 
     <select id="fingPostsBySerId" parameterType="map" resultType="ChannelPostDto">
         SELECT p.*, s.SER_TTL, cd.CD_NM as nowPostStusCdNm , u.NIC
+        --                (select NOW_POST_STUS_CD_NM from common_code where CD = p.NOW_POST_STUS_CD) as nowPostStusCdNm
         FROM post AS p
         INNER JOIN channel AS c ON p.CHNL_ID = c.CHNL_ID
         LEFT JOIN common_code as cd ON p.NOW_POST_STUS_CD = cd.CD
@@ -131,6 +132,7 @@
 
     <select id="getPostsByChnlUri" parameterType="map" resultType="ChannelPostDto">
         SELECT p.*, s.SER_TTL, u.NIC as userNic, u.USER_IMG_PATH, tg.TAG_NM as postType
+        --                (select NOW_POST_STUS_CD_NM from common_code where CD = p.NOW_POST_STUS_CD) as nowPostStusCdNm
         FROM post AS p
         INNER JOIN channel AS c ON p.CHNL_ID = c.CHNL_ID
         INNER JOIN common_code as cd ON p.NOW_POST_STUS_CD = cd.CD
@@ -191,6 +193,7 @@
                p.NOW_POST_STUD_CHG_DTM as nowPostStudChgDtm,
                s.SER_TTL as serTtl,
                u.NIC as userNic,
+--                (select NOW_POST_STUS_CD_NM from common_code where CD = p.NOW_POST_STUS_CD) as nowPostStusCdNm
                ccd.CD_NM as nowPostStusCdNm
         FROM post as p
                  INNER JOIN channel c ON p.CHNL_ID = c.CHNL_ID
@@ -220,6 +223,7 @@
                s.SER_TTL as serTtl,
                u.NIC as userNic,
                cc.CD_NM as nowPostStusCdNm
+--                (select NOW_POST_STUS_CD_NM from common_code where CD = p.NOW_POST_STUS_CD) as nowPostStusCdNm
         FROM post as p
                  INNER JOIN channel c ON p.CHNL_ID = c.CHNL_ID
                  INNER JOIN user as u ON c.CRT_ID = u.USER_ID
@@ -254,6 +258,8 @@
 
     <select id="findByIdInContent" parameterType="Integer" resultType="PostViewDto">
         SELECT p.*, s.SER_TTL, cd.CD_NM as nowPostStusCdNm , u.NIC as userNic, u.USER_IMG_PATH, tg.TAG_NM as postType, p.POST_CONTENT, c.CHNL_URI
+
+--                (select NOW_POST_STUS_CD_NM from common_code where CD = p.NOW_POST_STUS_CD) as nowPostStusCdNm
         FROM post AS p
                  INNER JOIN channel AS c ON p.CHNL_ID = c.CHNL_ID
                  INNER JOIN common_code as cd ON p.NOW_POST_STUS_CD = cd.CD
@@ -267,6 +273,7 @@
 
     <select id="getPostsBySc" parameterType="map" resultType="ChannelPostDto">
         SELECT p.*, ser.SER_TTL, u.NIC as userNic, u.USER_IMG_PATH, tg.TAG_NM as postType,
+        --                (select NOW_POST_STUS_CD_NM from common_code where CD = p.NOW_POST_STUS_CD) as nowPostStusCdNm
         CASE WHEN sc.user_id IS NOT NULL THEN 1 ELSE 0 END AS isScraped
         FROM post AS p
         INNER JOIN channel AS c ON p.CHNL_ID = c.CHNL_ID
