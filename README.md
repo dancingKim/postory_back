@@ -20,17 +20,18 @@
 ### 담당 모듈
 #### Backend:
 - 백엔드 프로젝트 아키텍처 총 책임
-	- 스프링과 리액트에서 스프링 부트와 리액트 환경으로 전환을 주도했습니다. 그래서 팀원들이 spring-security 사용을 쉽게 할 수 있었습니다.
-	- 3-tier 방식 배포를 선택했습니다. 콘텐츠 플랫폼 특성상 DB와 API를 나누는 것이 적합하다 판단했습니다.
-    	- SQL에 익숙한 팀원들 개발속도를 위해 MyBatis를 사용했습니다.
+	- 스프링과 리액트에서 스프링 부트와 리액트 환경으로 전환을 주도
+	- 3-tier 방식 배포
+	- MyBatis, SpringSecurity, JWT, OAuth2, CORS 문제 해결 등
 - HTTP API 명세서 작성 및 개발
 	- 채널, 포스트, 시리즈 CRUD 및 검색 기능 구현
 - AWS
 	- 3-tier 방식 App 배포 및 AWS S3를 활용한 이미지 업로드 기능 구현
 - 단위 테스트
-	- JUnit5를 활용한 단위 테스트 도입 게시물 쓰기 기능을 고도화하며 단위 테스트를 도입했습니다.  테스트를 실패한 후 함수가 결합도가 높아 디버깅이 어려웠습니다. 큰 함수를 작게 모듈화했고, 이 과정에서 중복도 줄일 수 있었습니다.
+	- JUnit5를 활용한 단위 테스트 도입
+	- 게시물 쓰기 기능 단위 테스트를 도입으로 함수 모듈화와, 중복도 제거.
 - DB 설계
-	- 34개 테이블을 설계, 320개 이상의 단어, 도메인, 코드 사전 공동 제작
+	- 68개 중 34개 테이블을 설계, 320개 이상의 단어, 도메인, 코드 사전 공동 제작
 - Migration
 	- spring boot2를 spring boot3로 변경
 #### Frontend:
@@ -39,8 +40,11 @@
 - AWS EC2를 이용한 프론트엔드 배포
 
 ### 사용한 기술들
+- Spring Boot 3, gradle, Spring Security, MyBatis, MySql, AWS RDS, EC2, S3
+- React, JSX, styled-component, javascript, html, css, react quill, ZUSTANDARD, yarn
 
 1. Back-end
+
 
 	처음엔 Spring Legacy를 maven 방식으로 빌드했습니다. 그리고 spring security를  적용했습니다. 그리고 완성한 영역 외에 결제, 멤버십, 상품, 포인트 등 모두 68개 테이블을 설계했었습니다.
 
